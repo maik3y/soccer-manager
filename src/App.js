@@ -107,10 +107,15 @@ class Position extends React.Component {
 
     positionClassName(key) {
         let className = 'field__player';
-        if (this.props.selectedPositions !== undefined && this.props.selectedPositions.indexOf(key) >= 0) {
+        if (this.positionIsSelected(key)) {
             return className + " field__player--selected"
         }
         return className;
+    }
+
+    positionIsSelected(key) {
+        return this.props.selectedPositions !== undefined
+            && this.props.selectedPositions.indexOf(key) >= 0;
     }
 
     render() {
