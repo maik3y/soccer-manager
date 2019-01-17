@@ -96,7 +96,8 @@ class Team extends React.Component {
                 </div>
                 <div className="field__line">
                     <Position data={positions[0]}
-                              selectedPositions={this.state.selectedPositions} />
+                              selectedPositions={this.state.selectedPositions}
+                    />
                 </div>
             </div>
         );
@@ -104,6 +105,10 @@ class Team extends React.Component {
 }
 
 class Position extends React.Component {
+
+    state = {
+        data : {}
+    }
 
     positionClassName(key) {
         let className = 'field__player';
@@ -118,14 +123,22 @@ class Position extends React.Component {
             && this.props.selectedPositions.indexOf(key) >= 0;
     }
 
+    handleClick() {
+        let url = "http://localhost:8080/soccer/Pogba";
+        fetch(url, {"mode":"cors"})
+            .then(response => response.json())
+            .then(data => this.setState({ data }));
+    }
+
     render() {
         return (
-            <div className={this.positionClassName(this.props.data.key)}>
+            <div className={this.positionClassName(this.props.data.key)}
+                 onClick={() => this.handleClick()} >
                 {this.props.data.name}
             </div>
         );
     }
-};
+}
 
 class PlayerPicker extends React.Component {
 
