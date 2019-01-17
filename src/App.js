@@ -62,7 +62,7 @@ const positions = [
 class Team extends React.Component {
 
     state = {
-      selectedPositions: [9, 3],
+      selectedPositions: [],
     };
 
     render() {
@@ -106,14 +106,20 @@ class Team extends React.Component {
 
 class Position extends React.Component {
 
-    state = {
-        data : {}
-    }
+    state = { show: false }
+
+    showModal = () => {
+        this.setState({ show: true });
+    };
+
+    hideModal = () => {
+        this.setState({ show: false });
+    };
 
     positionClassName(key) {
-        let className = 'field__player';
+        let className = 'player';
         if (this.positionIsSelected(key)) {
-            return className + " field__player--selected"
+            return className + " player--selected"
         }
         return className;
     }
@@ -124,17 +130,18 @@ class Position extends React.Component {
     }
 
     handleClick() {
-        let url = "http://localhost:8080/soccer/Pogba";
-        fetch(url, {"mode":"cors"})
-            .then(response => response.json())
-            .then(data => this.setState({ data }));
+        this.showModal();
     }
 
     render() {
         return (
             <div className={this.positionClassName(this.props.data.key)}
                  onClick={() => this.handleClick()} >
-                {this.props.data.name}
+                <i className="player__add fa fa-plus" />
+                <span className="player__position">({this.props.data.position})</span>
+                <span className="player__name">
+                    {this.props.data.name}
+                </span>
             </div>
         );
     }
@@ -143,20 +150,27 @@ class Position extends React.Component {
 class PlayerPicker extends React.Component {
 
     state = {
-        player: ''
+        playerName: '',
     };
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state.player);
+        let url = 'http://localhost:8080/player/' + this.state.playerName;
+        fetch(url, {"mode":"cors"})
+            .then(response => response.json())
+            .then(data => this.showResult(data));
+    };
+
+    showResult = (data) => {
+        console.log(data);
     };
 
     render() {
         return (
             <form className="form" onSubmit={this.handleSubmit}>
                 <input type="text"
-                       value={this.state.player}
-                       onChange={(event) => this.setState({ player: event.target.value })}
+                       value={this.state.playerName}
+                       onChange={(event) => this.setState({ playerName: event.target.value })}
                        placeholder="Add player" required />
                 <button type="submit">Add player</button>
             </form>
@@ -164,19 +178,44 @@ class PlayerPicker extends React.Component {
     }
 }
 
+
+const Modal = ({ handleClose, show, children }) => {
+
+    const showHideClassName = show ? 'modal modal--visible' : 'modal modal--hidden';
+
+    return (
+        <div className={showHideClassName}>
+            <div className="modal__dialog">
+                <div className="modal__content">
+                    <div className="modal__header">
+                        <i onClick={handleClose} className="modal__close-btn fa fa-times" />
+                        <p className="modal__title">Pick a player</p>
+                    </div>
+                    <div className="modal__body">
+                        <PlayerPicker />
+                    </div>
+                    <div className="modal__footer">
+                        <p className="modal_close-link"
+                           onClick={handleClose}>Sluiten
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div className="modal__bg" />
+        </div>
+    );
+};
+
 class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className="left">
-                    <Team />
-                </div>
-                <div className="right">
-                    <PlayerPicker />
-                </div>
+                <Team />
+                <Modal />
             </div>
         );
     }
 }
+
 
 export default App;
