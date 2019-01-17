@@ -120,7 +120,9 @@ class Position extends React.Component {
 
     render() {
         return (
-            <div className={this.positionClassName(this.props.data.key)}>{this.props.data.name}</div>
+            <div className={this.positionClassName(this.props.data.key)}>
+                {this.props.data.name}
+            </div>
         );
     }
 };
