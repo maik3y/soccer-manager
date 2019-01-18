@@ -59,46 +59,65 @@ const positions = [
     }
 ];
 
-class Team extends React.Component {
+class Squad extends React.Component {
 
-    state = {
-      selectedPositions: [],
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            name: '',
+            isShowing: false
+        }
+    }
+
+    openModalHandler = () => {
+        this.setState({
+            isShowing: true
+        });
+    };
+
+    closeModalHandler = () => {
+        this.setState({
+            isShowing: false
+        });
+    };
+
+    positionIsSelected = (key) => {
+        return this.props.selectedPositions !== undefined
+            && this.props.selectedPositions.indexOf(key) >= 0;
+    };
+
+    getPosition = (key) => {
+        return <Position data={positions[key]}
+                         selected={this.positionIsSelected(key)}
+                         openModalHandler={() => this.openModalHandler()} />;
     };
 
     render() {
         return (
             <div className="field">
                 <div className="field__line">
-                    <Position data={positions[10]}
-                              selectedPositions={this.state.selectedPositions} />
-                    <Position data={positions[9]}
-                              selectedPositions={this.state.selectedPositions} />
-                    <Position data={positions[8]}
-                              selectedPositions={this.state.selectedPositions} />
+                    {this.getPosition(10)}
+                    {this.getPosition(9)}
+                    {this.getPosition(8)}
                 </div>
                 <div className="field__line">
-                    <Position data={positions[7]}
-                              selectedPositions={this.state.selectedPositions} />
-                    <Position data={positions[6]}
-                              selectedPositions={this.state.selectedPositions} />
-                    <Position data={positions[5]}
-                              selectedPositions={this.state.selectedPositions} />
+                    {this.getPosition(7)}
+                    {this.getPosition(6)}
+                    {this.getPosition(5)}
                 </div>
                 <div className="field__line">
-                    <Position data={positions[4]}
-                              selectedPositions={this.state.selectedPositions} />
-                    <Position data={positions[3]}
-                              selectedPositions={this.state.selectedPositions} />
-                    <Position data={positions[2]}
-                              selectedPositions={this.state.selectedPositions} />
-                    <Position data={positions[1]}
-                              selectedPositions={this.state.selectedPositions} />
+                    {this.getPosition(4)}
+                    {this.getPosition(3)}
+                    {this.getPosition(2)}
+                    {this.getPosition(1)}
                 </div>
                 <div className="field__line">
-                    <Position data={positions[0]}
-                              selectedPositions={this.state.selectedPositions}
-                    />
+                    {this.getPosition(0)}
                 </div>
+                <Modal show={this.state.isShowing}
+                       close={this.closeModalHandler}>
+                </Modal>
             </div>
         );
     }
@@ -106,38 +125,19 @@ class Team extends React.Component {
 
 class Position extends React.Component {
 
-    state = { show: false }
-
-    showModal = () => {
-        this.setState({ show: true });
-    };
-
-    hideModal = () => {
-        this.setState({ show: false });
-    };
-
-    positionClassName(key) {
-        let className = 'player';
-        if (this.positionIsSelected(key)) {
+    positionClassName() {
+        let className = 'player player--card';
+        if (this.props.selected) {
             return className + " player--selected"
         }
         return className;
     }
 
-    positionIsSelected(key) {
-        return this.props.selectedPositions !== undefined
-            && this.props.selectedPositions.indexOf(key) >= 0;
-    }
-
-    handleClick() {
-        this.showModal();
-    }
-
     render() {
         return (
-            <div className={this.positionClassName(this.props.data.key)}
-                 onClick={() => this.handleClick()} >
-                <i className="player__add fa fa-plus" />
+            <div className={this.positionClassName()}
+                 onClick={() => this.props.openModalHandler()}>
+                <i className="player__add fa fa-plus"/>
                 <span className="player__position">({this.props.data.position})</span>
                 <span className="player__name">
                     {this.props.data.name}
@@ -148,70 +148,95 @@ class Position extends React.Component {
 }
 
 class PlayerPicker extends React.Component {
-
     state = {
-        playerName: '',
+        result: [],
     };
 
-    handleSubmit = (event) => {
+    liveSearch = (event) => {
         event.preventDefault();
-        let url = 'http://localhost:8080/player/' + this.state.playerName;
-        fetch(url, {"mode":"cors"})
+        let url = 'http://localhost:8080/player/' + event.target.value;
+        fetch(url, {"mode": "cors"})
             .then(response => response.json())
-            .then(data => this.showResult(data));
+            .then(data => {
+                this.setState({result: this.filterResult(data)})
+            });
     };
 
-    showResult = (data) => {
+    filterResult = (data) => {
         console.log(data);
+        return data;
     };
 
     render() {
         return (
-            <form className="form" onSubmit={this.handleSubmit}>
+            <form className="form" >
                 <input type="text"
-                       value={this.state.playerName}
-                       onChange={(event) => this.setState({ playerName: event.target.value })}
-                       placeholder="Add player" required />
-                <button type="submit">Add player</button>
+                       className="form__input form__input--text"
+                       value={this.state.name}
+                       onChange={(event) => this.liveSearch(event)}
+                       placeholder="Add player" required/>
+                <SearchSuggestion data={this.state.result}/>
             </form>
         );
     }
 }
 
-
-const Modal = ({ handleClose, show, children }) => {
-
-    const showHideClassName = show ? 'modal modal--visible' : 'modal modal--hidden';
-
+const SearchSuggestion = (props) => {
+    let show = false;
     return (
-        <div className={showHideClassName}>
+        <ul className="suggestion">
+            <li className="player player--suggestion"
+                style={{
+                    display: show > 0 ? 'block' : 'none',
+                }}>
+                <div className="player__media player__media--small">
+                    <img className="player__image" src="https://unsplash.it/40" alt="" />
+                </div>
+                <div className="player__name player__name--large">
+                    Pogba
+                </div>
+            </li>
+        </ul>
+    );
+};
+
+const Modal = (props) => {
+    return (
+        <div className="modal"
+             style={{
+                 transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
+                 opacity: props.show ? '1' : '0',
+                 display: props.show ? 'block' : 'none'
+             }}>
+            <div className="modal__bg" />
             <div className="modal__dialog">
                 <div className="modal__content">
                     <div className="modal__header">
-                        <i onClick={handleClose} className="modal__close-btn fa fa-times" />
+                        <i onClick={props.close} className="modal__close-btn fa fa-times" />
                         <p className="modal__title">Pick a player</p>
                     </div>
                     <div className="modal__body">
                         <PlayerPicker />
-                    </div>
-                    <div className="modal__footer">
-                        <p className="modal_close-link"
-                           onClick={handleClose}>Sluiten
-                        </p>
+                        <SearchSuggestion />
                     </div>
                 </div>
             </div>
-            <div className="modal__bg" />
         </div>
-    );
+    )
 };
 
+
 class App extends Component {
+
+    state = {
+        selectedPositions: [],
+        rating: 0,
+    };
+
     render() {
         return (
             <div className="App">
-                <Team />
-                <Modal />
+                <Squad selectedPositions={this.state.selectedPositions} />
             </div>
         );
     }
