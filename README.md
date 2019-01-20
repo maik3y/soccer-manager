@@ -34,7 +34,7 @@ To install the necessary dependencies to run this application, enter the followi
 As i've mentioned this application makes use of the official FIFA19 &copy; player database.
 In order for us to bypass CORS restrictions, we have to run a Node.js server which handles the API requests for us.
 
-Now that we have the necessary dependencies to start, run the Node.js server excecuting the following comand:
+run the Node.js server by executing the following command:
 
 ##### `node server.js`
 
@@ -48,4 +48,4 @@ Open a new CLI window and navigate to your project folder again. Now you can run
 
 ##### `serve -s build`
 
-This runs the application build. Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
