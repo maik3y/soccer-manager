@@ -76,6 +76,14 @@ code {
 .sidebar .sidebar__title {
   color: #FFF;
 }
+.rating {
+  background: #eee;
+  padding: 20px;
+  text-align: center;
+}
+.rating .rating__total {
+  font-size: 3em;
+}
 .modal {
   position: fixed;
   width: 75%;
@@ -128,9 +136,6 @@ code {
   position: relative;
   padding: 20px;
 }
-.app {
-  display: flex;
-}
 .field {
   width: 75%;
   height: 100vh;
@@ -145,14 +150,6 @@ code {
   flex-flow: row-reverse wrap;
   max-width: 600px;
   margin: 2.5% auto;
-}
-.rating {
-  background: #eee;
-  padding: 20px;
-  text-align: center;
-}
-.rating .rating__total {
-  font-size: 3em;
 }
 .player {
   background: url(../assets/images/playercard.png) no-repeat center center;
@@ -255,5 +252,8 @@ code {
   top: 55px;
   left: 0;
   padding: 0 20px;
+}
+.app {
+  display: flex;
 }
 /*# sourceMappingURL=App.css.map */

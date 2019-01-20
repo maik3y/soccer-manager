@@ -59,7 +59,7 @@ class PlayerPicker extends Component {
                     className="form__input form__input--text"
                     value={this.state.name}
                     onKeyUp={(event) => this.liveSearch(event)}
-                    placeholder="Enter a player name here" required
+                    placeholder="Enter a player name here"
                 />
                 <ul className={this.state.result === undefined ? "suggestion suggestion--visible" : "suggestion"}>
                     <SearchSuggestion

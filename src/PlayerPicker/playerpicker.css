@@ -1,0 +1,118 @@
+.field {
+  width: 75%;
+  height: 100vh;
+  background: url(../assets/images/fieldbg.png) #eee no-repeat center center;
+  background-size: contain;
+}
+.field .field__line {
+  display: flex;
+  width: 100%;
+  height: 20%;
+  justify-content: center;
+  flex-flow: row-reverse wrap;
+  max-width: 600px;
+  margin: 2.5% auto;
+}
+.player {
+  background: url(../assets/images/playercard.png) no-repeat center center;
+  background-size: contain;
+  display: flex;
+}
+.player--card {
+  width: 125px;
+  height: 150px;
+  text-align: center;
+  margin: auto;
+  align-items: center;
+  flex-flow: column;
+  position: relative;
+}
+.player--card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.player--placeholder {
+  opacity: 0.8;
+}
+.player--placeholder:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.player--suggestion {
+  list-style: none;
+  justify-content: flex-start;
+  flex-flow: row;
+  border-bottom: 1px solid #ccc;
+  background: #fff;
+}
+.player--suggestion:hover {
+  background: #f8f8f8;
+  cursor: pointer;
+  transform: scale(1.01);
+}
+.player .player__card-pos {
+  color: #FFF;
+  font-weight: bold;
+  position: absolute;
+  bottom: -25px;
+  background: #000;
+  border-radius: 50%;
+  padding: 4px;
+}
+.player .player__position {
+  margin-top: 5px;
+}
+.player .player__rating {
+  font-size: 1.5em;
+}
+.player .player__name {
+  font-size: 1em;
+  max-width: 80px;
+}
+.player .player__name--large {
+  font-size: 1em;
+  padding: 15px;
+  max-width: none;
+}
+.player .player__media {
+  width: 55px;
+  height: 55px;
+  margin-top: 3px;
+}
+.player .player__media .player__image {
+  width: 100%;
+  height: auto;
+}
+.player .player__media--small {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+}
+.form {
+  display: flex;
+  flex-flow: row wrap;
+}
+.form .form__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 1em;
+  outline: none;
+}
+.form .form__input--text {
+  border: 1px solid #eee;
+  width: 100%;
+  padding: 0 10px;
+  line-height: 28px;
+  margin: 0;
+}
+.suggestion {
+  position: absolute;
+  width: 100%;
+  background: transparent;
+  top: 55px;
+  left: 0;
+  padding: 0 20px;
+}
+/*# sourceMappingURL=playerpicker.css.map */
