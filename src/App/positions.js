@@ -162,7 +162,7 @@ const positions = {
         name: "Centre midfielder",
         penalties: {
             low: ["CAM", "CDM"],
-            medium: ["CA", "LM", "RM"],
+            medium: ["CA", "LM", "RM", "CF"],
             high: [
                 "GK",
                 "LWB", "LB", "CB", "RB", "RWB",
@@ -179,7 +179,7 @@ const positions = {
             high: [
                 "GK",
                 "LWB", "LB", "RB", "RWB",
-                "LF", "RF", "ST", "CA",
+                "LF", "RF", "ST", "CA", "CF",
                 "LW", "RW"
             ],
         }
