@@ -1,0 +1,32 @@
+@import "../assets/variables.less";
+
+.sidebar {
+  width: 25%;
+  display: flex;
+  background: #FFF;
+  height: 100vh;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  flex-flow: column wrap;
+  border-top: 5px solid @red;
+  justify-content: space-between;
+
+  .sidebar__header {
+    display: block;
+    background: @black;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .sidebar__content {
+    padding: 20px;
+  }
+
+  .sidebar__footer {
+    padding: 20px;
+  }
+
+  .sidebar__title {
+    color: #FFF;
+  }
+}

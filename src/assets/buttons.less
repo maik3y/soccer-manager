@@ -1,0 +1,44 @@
+@import "variables.less";
+
+.btn {
+  width: 125px;
+  outline: 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #FFF;
+  text-align: center;
+
+  .btn__text {
+    position: relative;
+    padding: 5px 10px;
+    border-radius: 2px;
+    display: block;
+  }
+
+  &--red {
+    border: 1px solid @red;
+    background-color: @red;
+    color: #FFF;
+
+    &:hover {
+      background: #FFF;
+      border: 1px solid @red;
+      color: @red;
+    }
+  }
+
+  &--big {
+    font-size: 15px;
+    padding: 5px;
+  }
+
+  &--spacing-right {
+    margin-right: 15px;
+  }
+
+  &--spacing-left {
+    margin-left: 15px;
+  }
+}

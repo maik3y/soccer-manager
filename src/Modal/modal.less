@@ -1,0 +1,61 @@
+@import '../assets/variables.less';
+
+.modal {
+    position: fixed;
+    width: 75%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    .modal__bg {
+        background: rgba(0, 0, 0, 0.3);
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    .modal__dialog {
+        width: 600px;
+        margin: 30px auto;
+        transform: translate(0, 0);
+        z-index: 1;
+    }
+
+    .modal__content {
+        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        position: relative;
+        background-color: @black;
+        border-top: 5px solid @red;
+        border-radius: 2px;
+        background-clip: padding-box;
+        outline: 0;
+    }
+
+    .modal__close-btn {
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 1.5em;
+        color: #fff;
+
+        &:hover {
+            color: @red;
+        }
+    }
+
+    .modal__title {
+        padding: 10px 20px;
+        font-size: 2em;
+        font-weight: 600;
+        color:#FFF;
+    }
+
+    .modal__body {
+        position: relative;
+        padding: 20px;
+    }
+}
