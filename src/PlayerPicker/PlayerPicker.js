@@ -52,7 +52,7 @@ class PlayerPicker extends Component {
 
     render() {
         return (
-            <form className="form">
+            <form className="form" onSubmit={(event) => event.preventDefault()}>
                 <input
                     id="liveSearch"
                     type="text"

@@ -44,9 +44,8 @@ You can now minify this CLI window.
 
 #### Starting the application
 
-Now all is set up, run the application by typing:
+Open a new CLI window and navigate to your project folder again. Now you can run the application by typing:
 
-##### `npm start`
+##### `serve -s build`
 
-This runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This runs the application build. Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
