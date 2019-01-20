@@ -135,8 +135,8 @@ const positions = {
     "LW": {
         name: "Left wing",
         penalties: {
-            low: ["LF", "LM", "RW"],
-            medium: ["CAM", "CM", "RM"],
+            low: ["LF", "LM"],
+            medium: ["CAM", "CM", "RM", "RW"],
             high: [
                 "GK",
                 "LWB", "CB", "RB", "RWB",
@@ -200,8 +200,8 @@ const positions = {
     "RW": {
         name: "Right wing",
         penalties: {
-            low: ["RF", "RM", "LW"],
-            medium: ["CAM", "CM", "LM"],
+            low: ["RF", "RM"],
+            medium: ["CAM", "CM", "LM", "LW"],
             high: [
                 "GK",
                 "LWB", "CB", "RB", "RWB",

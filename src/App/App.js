@@ -3,16 +3,11 @@ import Sidebar from '../Sidebar/Sidebar.js';
 import Squad from '../Squad/Squad.js';
 import positions from "../App/positions.js";
 import formation from "../App/formation.js";
-
+import settings from "../App/settings.js";
 import './App.css';
 
 class App extends Component {
 
-    amountOfPositions = 11;
-    highPenalty = 0.1;
-    mediumPenalty = 0.5;
-    lowPenalty = 0.8;
-    noPenalty = 1;
     state = {
         selectedPositions: this.initPositions(),
         rating: 0,
@@ -36,7 +31,7 @@ class App extends Component {
                 }
             }
         }
-        return Math.floor(totalRating / this.amountOfPositions);
+        return Math.floor(totalRating / settings.amountOfPositions);
     };
 
     getPositionPenalty = (currentPosition, playerPosition) => {
@@ -57,18 +52,18 @@ class App extends Component {
 
         if (positions.hasOwnProperty(currentPosition)) {
             if (isHighPenalty()) {
-                return this.highPenalty;
+                return settings.highPenalty;
             } else if (isMediumPenalty()) {
-                return this.mediumPenalty;
+                return settings.mediumPenalty;
             } else if (isLowPenalty()) {
-                return this.lowPenalty;
+                return settings.lowPenalty;
             }
         }
-        return this.noPenalty;
+        return settings.noPenalty;
     };
 
     initPositions() {
-        return new Array(this.amountOfPositions).fill(0);
+        return new Array(settings.amountOfPositions).fill(0);
     };
 
     clearAllPositions = () => {
@@ -79,7 +74,8 @@ class App extends Component {
         return (
             <div className="app">
                 <Squad selectedPositions={this.state.selectedPositions}
-                       update={this.update} />
+                       update={this.update}
+                       getPositionPenalty={(currentPos, playerPos) => this.getPositionPenalty(currentPos, playerPos)} />
                 <Sidebar rating={this.calculateRating()}
                          clear={() => this.clearAllPositions}/>
             </div>
