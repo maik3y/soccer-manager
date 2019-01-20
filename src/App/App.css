@@ -174,11 +174,12 @@ code {
   height: 20%;
   justify-content: center;
   flex-flow: row-reverse wrap;
-  max-width: 600px;
+  max-width: 650px;
+  min-width: 375px;
   margin: 2.5% auto;
 }
 .field .field__line--midfield {
-  width: 65%;
+  width: 50%;
 }
 .player {
   background: url(../assets/images/playercard.png) no-repeat center center;
