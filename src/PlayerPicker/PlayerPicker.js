@@ -52,7 +52,9 @@ class PlayerPicker extends Component {
 
     render() {
         return (
-            <form className="form" onSubmit={(event) => event.preventDefault()}>
+            <form className="form"
+                  onSubmit={(event) => event.preventDefault()}
+                  autoComplete="off">
                 <input
                     id="liveSearch"
                     type="text"
@@ -60,6 +62,7 @@ class PlayerPicker extends Component {
                     value={this.state.name}
                     onKeyUp={(event) => this.liveSearch(event)}
                     placeholder="Enter a player name here"
+                    autoComplete="off"
                 />
                 <ul className={this.state.result === undefined ? "suggestion suggestion--visible" : "suggestion"}>
                     <SearchSuggestion

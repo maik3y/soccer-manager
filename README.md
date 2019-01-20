@@ -9,8 +9,8 @@ All of the data used in this application comes directly from the official FIFA19
 
 To get this application up and running you need to have:
 
-- Git installed ---> https://git-scm.com/downloads/
-- Node.js installed ---> https://nodejs.org/en/download/
+- Git installed ---> [https://git-scm.com/downloads/](https://git-scm.com/downloads/)
+- Node.js installed ---> [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 
 (Make sure to add both Git and Node.js to your PATH environment variable, or you won't be able to use them from the CLI)
 
@@ -49,3 +49,15 @@ Open a new CLI window and navigate to your project folder again. Now you can run
 ##### `serve -s build`
 
 Now open [http://localhost:5000](http://localhost:5000) in your favorite browser and voilá :)
+
+### Troubleshooting
+If you are having trouble with "serve -s build", it is possible to fall back on the development environment.
+Run this by typing:
+
+##### `npm start`
+
+The application is now available at [http://localhost:3000](http://localhost:3000)
+
+#### FYI
+
+- Some of the players have multiple cards, that is why they show up in the results more the once.
