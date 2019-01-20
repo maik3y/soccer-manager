@@ -136,6 +136,32 @@ code {
   position: relative;
   padding: 20px;
 }
+.form {
+  display: flex;
+  flex-flow: row wrap;
+}
+.form .form__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 1em;
+  outline: none;
+}
+.form .form__input--text {
+  border: 1px solid #eee;
+  width: 100%;
+  padding: 0 10px;
+  line-height: 28px;
+  margin: 0;
+}
+.suggestion {
+  position: absolute;
+  width: 100%;
+  background: transparent;
+  top: 55px;
+  left: 0;
+  padding: 0 20px;
+}
 .field {
   width: 75%;
   height: 100vh;
@@ -226,32 +252,6 @@ code {
   height: 50px;
   padding: 0;
   margin: 0;
-}
-.form {
-  display: flex;
-  flex-flow: row wrap;
-}
-.form .form__input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-size: 1em;
-  outline: none;
-}
-.form .form__input--text {
-  border: 1px solid #eee;
-  width: 100%;
-  padding: 0 10px;
-  line-height: 28px;
-  margin: 0;
-}
-.suggestion {
-  position: absolute;
-  width: 100%;
-  background: transparent;
-  top: 55px;
-  left: 0;
-  padding: 0 20px;
 }
 .app {
   display: flex;
