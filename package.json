@@ -6,6 +6,7 @@
     "express": "*",
     "fetch": "*",
     "node-fetch": "*",
+    "serve": "*",
     "react": "*",
     "react-dom": "*",
     "react-scripts": "*"

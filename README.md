@@ -48,4 +48,4 @@ Open a new CLI window and navigate to your project folder again. Now you can run
 
 ##### `serve -s build`
 
-Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+Now open [http://localhost:5000](http://localhost:5000) in your favorite browser and voilá :)
