@@ -16,20 +16,20 @@ To get this application up and running you need to have:
 
 ## Installation:
 
-#### Cloning the project
+### Cloning the project
 Clone the project in any directory you want using:
 
 ##### `git clone https://github.com/maik3y/soccer-manager.git`
 
 After cloning the repository, navigate to your project directory using your CLI.
 
-#### Installing dependencies
+### Installing dependencies
 
 To install the necessary dependencies to run this application, enter the following command:
 
 ##### `npm install`
 
-#### Starting the Node.js server
+### Starting the Node.js server
 
 As i've mentioned this application makes use of the official FIFA19 &copy; player database.
 In order for us to bypass CORS restrictions, we have to run a Node.js server which handles the API requests for us.
@@ -42,7 +42,7 @@ If the Node.js has started successfully, your CLI should now say 'listening on p
 
 You can now minify this CLI window.
 
-#### Starting the application
+### Starting the application
 
 Open a new CLI window and navigate to your project folder again. Now you can run the application by typing:
 
