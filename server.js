@@ -1,6 +1,7 @@
 const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
+const port = 8080;
 
 app.use(express.static('.'));
 app.get('/player/:name', (req, res) => {
@@ -20,6 +21,6 @@ app.get('/player/:name', (req, res) => {
 
 });
 
-app.listen(8080, () => {
-    console.log("listening");
+app.listen(port, () => {
+    console.log("listening on port:"+ port);
 });
