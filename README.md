@@ -44,16 +44,6 @@ You can now minify this CLI window.
 
 ### Starting the application
 
-Open a new CLI window and navigate to your project folder again. Now you can run the application by typing:
-
-##### `serve -s build`
-
-Now open [http://localhost:5000](http://localhost:5000) in your favorite browser and voilá :)
-
-### Troubleshooting
-If you are having trouble with "serve -s build", it is possible to fall back on the development environment.
-Run this by typing:
-
 ##### `npm start`
 
 The application is now available at [http://localhost:3000](http://localhost:3000)
